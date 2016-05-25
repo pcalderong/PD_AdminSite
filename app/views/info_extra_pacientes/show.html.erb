@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Estudiante:</strong>
+  <%= @info_extra_paciente.estudiante %>
+</p>
+
+<p>
+  <strong>Trabajador:</strong>
+  <%= @info_extra_paciente.trabajador %>
+</p>
+
+<p>
+  <strong>Lugar estudio trabajo:</strong>
+  <%= @info_extra_paciente.lugar_estudio_trabajo %>
+</p>
+
+<p>
+  <strong>Hijos:</strong>
+  <%= @info_extra_paciente.hijos %>
+</p>
+
+<p>
+  <strong>Cant hijos:</strong>
+  <%= @info_extra_paciente.cant_hijos %>
+</p>
+
+<p>
+  <strong>Referencia trab social:</strong>
+  <%= @info_extra_paciente.referencia_trab_social %>
+</p>
+
+<p>
+  <strong>Ayuda alimentos:</strong>
+  <%= @info_extra_paciente.ayuda_alimentos %>
+</p>
+
+<p>
+  <strong>Ayuda medicamento:</strong>
+  <%= @info_extra_paciente.ayuda_medicamento %>
+</p>
+
+<p>
+  <strong>Fk id persona:</strong>
+  <%= @info_extra_paciente.fk_id_persona %>
+</p>
+
+<%= link_to 'Edit', edit_info_extra_paciente_path(@info_extra_paciente) %> |
+<%= link_to 'Back', info_extra_pacientes_path %>

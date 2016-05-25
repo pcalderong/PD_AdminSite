@@ -1,0 +1,8 @@
+<h2> Reporte Ubicacion por Pacientes <h2>
+
+<%= form_tag reportes_view_path, multipart: true do %>
+  <%= select(:provincia, direccion_for_select("Provincia")) %></td>
+  <%= select(:canton, direccion_for_select("Canton")) %></td>
+  <%= select(:distrito, direccion_for_select("Distrito")) %></td>
+  <%=  link_to reportes_view_path 'Generar Reporte' class: "btn btn-primary"%>
+<% end %>

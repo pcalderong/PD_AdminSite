@@ -1,0 +1,8 @@
+
+      <tr>
+        <td><%= historial_clinico.fecha.strftime("%d/%m/%Y") %></td>
+        <td><%= historial_clinico.fk_id_lookup.nil? ? "" : id_to_value_direccion(historial_clinico.fk_id_lookup) %></td>
+        <td><%= link_to [historial_clinico.persona, historial_clinico], method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+        <% end %> </td>
+      </tr>

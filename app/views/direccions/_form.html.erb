@@ -1,0 +1,25 @@
+<%= form_for([@persona, @persona.direccions.build]) do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this direccion from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <td><%= f.select(:provincia, provincia_for_select()) %></td>
+  <td><%= f.select(:canton, canton_for_select("San Jose")) %></td> -->
+
+  <td><%= f.select :provincia, options_for_select(@provincias.collect { |provincia|
+  [provincia.value.titleize, provincia.id] }, 1), {}, { id: 'provincias_select'} %></td>
+  <td><%= f.select :canton, options_for_select(@cantones.collect { |canton|
+  [canton.value.titleize, canton.id] }, 0), {}, { id: 'cantones_select' } %></td>
+  <td><%= f.select :distrito, options_for_select(@distritos.collect { |distrito|
+  [distrito.value.titleize, distrito.id] }, 0), {}, { id: 'distritos_select' } %></td>
+  <td><%= f.text_area :direccion_exacta %></td>
+  <td><%= f.submit 'Guardar', class: "btn btn-primary"%></td>
+<% end %>

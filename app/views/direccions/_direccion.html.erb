@@ -1,0 +1,9 @@
+<tr>
+  <td><%= direccion.provincia.nil? ? "" : id_to_value_direccion(direccion.provincia) %></td>
+  <td><%= direccion.canton.nil? ? "" : id_to_value_direccion(direccion.canton) %></td>
+  <td><%= direccion.distrito.nil? ? "" : id_to_value_direccion(direccion.distrito) %></td>
+  <td><%= direccion.direccion_exacta %></td>
+  <td><%= link_to [direccion.persona, direccion], method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fa fa-trash"></i>
+  <% end %> </td>
+</tr>

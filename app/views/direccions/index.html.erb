@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Direccions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fk id persona</th>
+      <th>Provincia</th>
+      <th>Canton</th>
+      <th>Distrito</th>
+      <th>Direccion exacta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @direccions.each do |direccion| %>
+      <tr>
+        <td><%= direccion.fk_id_persona %></td>
+        <td><%= direccion.provincia %></td>
+        <td><%= direccion.canton %></td>
+        <td><%= direccion.distrito %></td>
+        <td><%= direccion.direccion_exacta %></td>
+        <td><%= link_to 'Show', direccion %></td>
+        <td><%= link_to 'Edit', edit_direccion_path(direccion) %></td>
+        <td><%= link_to 'Destroy', direccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Direccion', new_direccion_path %>

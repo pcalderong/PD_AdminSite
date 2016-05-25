@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+  *= require bootstrap-datepicker
+ *= require_tree .
+ *= require_self
+ *= require bootstrap
+ *= require rails_bootstrap_forms
+ *= require dataTables/jquery.dataTables
+ */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+h1, body, p, table, .btn {
+font-family: 'Open Sans', serif;
+}
+
+thead{
+    background-color: #eeaf36;
+    color: white;
+}
+
+.tab{
+  position: absolute;
+  left: 3em;
+}
+
+table
+{
+      margin-left:3em;
+      margin-right:3em;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
+}
+
+.header
+{
+      background-color: #ffffff;
+      margin-left:3em;
+      margin-right:3em;
+      margin-bottom: 0.2em;
+      margin-top: 0.2em;
+}
+.background-orange
+{
+  background-image: url('textura1.jpg');
+}
+
+.logo{
+  width: 75%;
+  height: auto;
+}
+
+
+.form-group{
+  margin-left:5em;
+  margin-right:20em;
+}

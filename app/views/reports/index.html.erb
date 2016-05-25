@@ -1,0 +1,53 @@
+<table id="report_table" class="table table-hover table-condensed table-striped" height="30%" width="50%">
+  <thead>
+    <tr>
+      <th>Nombre Reporte</th>
+      <th>Parametros</th>
+      <th>Ejecutar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |reporte| %>
+      <tr>
+
+        <%= form_tag({ controller: 'reports', action: 'generate_report'}, method: 'get') do %>
+            <td> <%= label_tag reporte.report_name%>
+                 <%= hidden_field_tag 'report', reporte.report_name %>
+            </td>
+            <td> <% if reporte.report_name.include?("Hospital")%>
+                      <%= select_tag 'hospi', options_from_collection_for_select(@hospitales, "id", "value") %>
+                 <% elsif reporte.report_name.include?("Fallecido")%>
+                      <%= text_field_tag 'fecha_ini', nil,  {'data-behaviour' => 'datepicker'} %> al
+                      <%= text_field_tag 'fecha_fin', nil,  {'data-behaviour' => 'datepicker'} %>
+                 <% elsif reporte.report_name.include?("Genero")%>
+                      <%= select_tag 'genero', options_for_select([["Femenino",0],["Masculino",1]]) %>
+                <% elsif reporte.report_name.include?("Ubicacion")%>
+                  <%= select_tag :provincia, options_for_select(@provincias.collect { |provincia|
+                      [provincia.value.titleize, provincia.id] }, 1),  { id: 'provincias_select_report'}  %>
+                  <%= select_tag :canton, options_for_select(@cantones.collect { |canton|
+                      [canton.value.titleize, canton.id] }, 0), { id: 'cantones_select_report' }%>
+                  <%= select_tag :distrito, options_for_select(@distritos.collect { |distrito|
+                      [distrito.value.titleize, distrito.id] }, 0), { id: 'distritos_select_report'}  %>
+                <% elsif reporte.report_name.include?("Padecimiento")%>
+                  <%= select_tag :padecimiento, options_for_select(@padecimientos.collect { |padecimiento|
+                      [padecimiento.value.titleize, padecimiento.id] }, 1), { id: 'padecimientos_select_report'} %>
+                  <%= select_tag :tipo_padecimiento, options_for_select(@tipos_padecimientos.collect { |tipo_padecimiento|
+                      [tipo_padecimiento.value.titleize, tipo_padecimiento.id] }, 1), { id: 'tipo_padecimiento_select_report'}  %>
+                <% elsif reporte.report_name.include?("Estudio")%>
+                  <%= text_field_tag 'centro_estudio' %>
+                <% elsif reporte.report_name.include?("Edad")%>
+                    <%= number_field_tag 'edad_ini' %> a
+                    <%= number_field_tag 'edad_fin' %>
+                <% end %>
+            </td>
+            <td> <%= submit_tag "Search", name: nil, class: 'btn' do %>
+                      <i class="fa fa-plus"></i>
+                <% end %>
+                </td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

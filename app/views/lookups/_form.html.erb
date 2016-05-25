@@ -1,0 +1,9 @@
+<tr>
+  <%= form_for(Lookup.new) do |f| %>
+    <td><%= f.text_field :value %></td>
+    <td><%= f.text_field :descripcion %></td>
+    <td><%= f.submit 'Guardar', class: "btn btn-primary" %> </td>
+    <td><span style="display:none;"><%= f.text_field :parent, :value => get_type_id(l_type) %></span></td>
+    <td><span style="display:none;"><%= f.text_field :lookup_type, :value => get_type_value(l_type) %></span></td>
+    <% end %>
+  </tr>

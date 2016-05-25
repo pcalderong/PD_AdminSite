@@ -1,0 +1,2 @@
+module HistorialClinicosHelper
+end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fk id persona:</strong>
+  <%= @historial_clinico.fk_id_persona %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @historial_clinico.fecha %>
+</p>
+
+<p>
+  <strong>Fk id lookup:</strong>
+  <%= @historial_clinico.fk_id_lookup %>
+</p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @historial_clinico.orden %>
+</p>
+
+<%= link_to 'Edit', edit_historial_clinico_path(@historial_clinico) %> |
+<%= link_to 'Back', historial_clinicos_path %>

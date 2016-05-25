@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Telefono:</strong>
+  <%= @info_contacto.telefono %>
+</p>
+
+<p>
+  <strong>Nombre contacto:</strong>
+  <%= @info_contacto.nombre_contacto %>
+</p>
+
+<p>
+  <strong>Parentesco:</strong>
+  <%= @info_contacto.parentesco %>
+</p>
+
+<%= link_to edit_info_contacto_path(@info_contacto), class: "btn btn-warning" do %>
+    <i class="fa fa-pencil">Editar Paciente</i>
+<% end %>
+<%= link_to 'Back', info_contactos_path %>

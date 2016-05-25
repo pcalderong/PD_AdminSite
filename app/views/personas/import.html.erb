@@ -1,0 +1,5 @@
+<h2>Importar Excel - Pacientes</h2>
+<%= form_tag personas_import_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Importar" %>
+<% end %>

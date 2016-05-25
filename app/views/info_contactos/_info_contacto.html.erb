@@ -1,0 +1,9 @@
+
+      <tr>
+        <td><%= best_in_place info_contacto.persona, :telefono %></td>
+        <td><%= info_contacto.nombre_contacto %></td>
+        <td><%= info_contacto.parentesco %></td>
+        <td><%= link_to [info_contacto.persona, info_contacto], method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+        <% end %> </td>
+      </tr>

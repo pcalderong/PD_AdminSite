@@ -1,0 +1,14 @@
+<tr>
+  <td><%= info_extra_paciente.estudiante ? "Si": "No"%>
+  <td><%= info_extra_paciente.trabajador ? "Si": "No"%>
+  <td><%= info_extra_paciente.lugar_estudio_trabajo%>
+  <td><%= info_extra_paciente.hijos ? "Si": "No" %></td>
+  <td><%= info_extra_paciente.cant_hijos.nil? ? "0": info_extra_paciente.cant_hijos %></td>
+  <td><%= info_extra_paciente.cant_hermanos.nil? ? "0": info_extra_paciente.cant_hermanos %></td>
+  <td><%= info_extra_paciente.referencia_trab_social ? "Si": "No"  %></td>
+  <td><%= info_extra_paciente.ayuda_alimentos ? "Si": "No"  %></td>
+  <td><%= info_extra_paciente.ayuda_medicamento ? "Si": "No"  %></td>
+  <td><%= link_to [info_extra_paciente.persona, info_extra_paciente], method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fa fa-trash"></i>
+  <% end %> </td>
+</tr>

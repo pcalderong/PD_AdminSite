@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fk id persona:</strong>
+  <%= @direccion.fk_id_persona %>
+</p>
+
+<p>
+  <strong>Provincia:</strong>
+  <%= @direccion.provincia %>
+</p>
+
+<p>
+  <strong>Canton:</strong>
+  <%= @direccion.canton %>
+</p>
+
+<p>
+  <strong>Distrito:</strong>
+  <%= @direccion.distrito %>
+</p>
+
+<p>
+  <strong>Direccion exacta:</strong>
+  <%= @direccion.direccion_exacta %>
+</p>
+
+<%= link_to 'Edit', edit_direccion_path(@direccion) %> |
+<%= link_to 'Back', direccions_path %>

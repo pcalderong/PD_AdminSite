@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Info Extra Pacientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Trabajador</th>
+      <th>Lugar estudio trabajo</th>
+      <th>Hijos</th>
+      <th>Cant hijos</th>
+      <th>Referencia trab social</th>
+      <th>Ayuda alimentos</th>
+      <th>Ayuda medicamento</th>
+      <th>Fk id persona</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @persona.info_extra_paciente.estudiante %></td>
+        <td><%= @persona.info_extra_paciente.trabajador %></td>
+        <td><%= @persona.info_extra_paciente.lugar_estudio_trabajo %></td>
+        <td><%= @persona.info_extra_paciente.hijos %></td>
+        <td><%= @persona.info_extra_paciente.cant_hijos %></td>
+        <td><%= @persona.info_extra_paciente.cant_hermanos %></td>
+        <td><%= @persona.info_extra_paciente.referencia_trab_social %></td>
+        <td><%= @persona.info_extra_paciente.ayuda_alimentos %></td>
+        <td><%= @persona.info_extra_paciente.ayuda_medicamento %></td>
+        <td><%= @persona.info_extra_paciente.persona_id %></td>
+        <td><%= @persona.link_to 'Destroy', persona_info_extra_paciente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Info extra paciente', new_info_extra_paciente_path %>

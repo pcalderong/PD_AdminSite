@@ -1,0 +1,11 @@
+<tr>
+  <td><%= diagnostico.fecha.strftime("%d/%m/%Y") %></td>
+  <td><%= diagnostico.especialidad_id.nil? ? "" : id_to_value_diagnostico(diagnostico.especialidad_id) %></td>
+  <td><%= diagnostico.padecimiento.nil? ? "" : id_to_value_diagnostico(diagnostico.padecimiento) %></td>
+  <td><%= diagnostico.tipo_padecimiento.nil? ? "" : id_to_value_diagnostico(diagnostico.tipo_padecimiento) %></td>
+  <td><%= diagnostico.hospital.nil? ? "" : id_to_value_diagnostico(diagnostico.hospital) %></td>
+  <td><%= diagnostico.description %></td>
+  <td><%= link_to [diagnostico.persona, diagnostico], method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="fa fa-trash"></i>
+  <% end %> </td>
+</tr>

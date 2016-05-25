@@ -1,0 +1,35 @@
+<%= bootstrap_form_for(@persona, inline_errors: true) do |f| %>
+      <div class="form-group">
+          <%= f.text_field :nombre, id:"nombre1", class:"form-control", size:"20", placeholder:"Nombre"  %>
+      </div>
+      <div class="form-group">
+          <%= f.text_field :primer_apellido, id:"primer_apellido2", class:"form-control", size:"20", placeholder:"Primer Apellido" %>
+      </div>
+      <div class="form-group">
+          <%= f.text_field :segundo_apellido, id:"segundo_apellido3", class:"form-control", size:"20", placeholder:"Segundo Apellido" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :fecha_nacimiento, id:"fn4", class:"form-control", 'data-behaviour' => 'datepicker' %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :correo_electronico, id:"email", class:"form-control", size:"20", placeholder:"correo@dominio.com" %>
+      </div>
+      <div class="form-group">
+          <%= f.select(:genero, [['Masculino', '1'], ['Femenino', '0']],id:'genero1') %>
+      </div>
+      <div class="form-group">
+          <%= f.text_field :cedula, id:"cedula", class: field_class(@persona, :cedula) , size:"20s", placeholder:"XXXXXXXXX" %>
+      </div>
+      <div class="form-group">
+          <%= f.select(:estado_civil, get_estados_civiles(), id:'estado_civil') %>
+      </div>
+      <div class="form-group">
+          <%= f.text_field :telefono, class: field_class(@persona, :telefono), size:"20" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Guardar Informacion", class: "btn btn-default" do %>
+            <i class="fa fa-floppy-o"></i>
+        <% end %>
+      </div>
+
+<% end %>

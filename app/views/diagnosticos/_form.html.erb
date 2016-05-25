@@ -1,0 +1,24 @@
+<%= form_for([@persona, @persona.diagnosticos.build])  do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this diagnostico from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <td><%= f.date_select :fecha %></td> -->
+  <td><%= f.text_field :fecha, 'data-behaviour' => 'datepicker'%></td>
+  <td><%= f.collection_select :especialidad_id, data_for_select("Especialidad"), :id, :value %></td>
+  <td><%= f.select :padecimiento, options_for_select(@padecimientos.collect { |padecimiento|
+  [padecimiento.value.titleize, padecimiento.id] }, 1), {}, { id: 'padecimientos_select'} %></td>
+  <td><%= f.select :tipo_padecimiento, options_for_select(@tipos_padecimientos.collect { |tipo_padecimiento|
+  [tipo_padecimiento.value.titleize, tipo_padecimiento.id] }, 1), {}, { id: 'tipo_padecimiento_select'} %></td>
+  <td><%= f.collection_select :hospital, data_for_select("Hospital"), :id, :value %></td>
+  <td><%= f.text_area :description %></td>
+  <td><%= f.submit 'Guardar', class: "btn btn-primary" %></td>
+<% end %>

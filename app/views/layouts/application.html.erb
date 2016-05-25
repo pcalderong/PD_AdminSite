@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PacientesAdminBootstrap</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'menu'%>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div class="background-orange">
+    <div class="wrap">
+      <nav class="nav-bar navbar-inverse header" role="navigation">
+          <div id ="top-menu" class="container-fluid active header">
+              <!-- a class="navbar-brand" href="/"> -->
+                <%= link_to image_tag('logo2_104.jpg', class:'logo'), {action: 'index', controller: 'personas'}, {class: 'navbar-brand'} %>
+                <br/>
+                <br/>
+              <ul class="nav navbar-nav">
+
+                  <li class="dropdown movable">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="fa fa-4x fa-child"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <%= link_to login_path do %>
+                                <i class="fa fa-user"><span class="tab">Ingresar</span></i>
+                            <% end %>
+                          <li class="divider"></li>
+                          <li><%= link_to new_persona_path do %>
+                              <i class="fa fa-power-off"><span class="tab">Salir</span></i>
+                          <% end %>
+                      </ul>
+                  </li>
+                  <li>
+                    <p class="navbar-text navbar-right">
+  <% if logged_in? %>
+    <!-- <% if current_user.image_url %> -->
+      <!-- <%= image_tag current_user.image_url, class: "img-circle", width: 24 %>
+    <% end %> -->
+    <span>
+      <%= current_user.name %> &nbsp;
+      <%# [START logout] %>
+      <%= link_to "(logout)", logout_path %>
+    </span>
+  <% else %>
+    <%= link_to "Login", login_path %>
+  <% end %>
+</p>
+                  </li>
+
+              </ul>
+          </div>
+      </nav>
+      <aside id="side-menu" class="aside" role="navigation">
+            <ul class="nav nav-list accordion">
+
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-users"></i>Pacientes<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><%= link_to "Agregar Paciente", new_persona_path %></li>
+                  <li><%= link_to "Mostrar Paciente", personas_path %></li>
+                  <li><%= link_to "Importar Paciente", personas_import_path %></li>
+                </ul>
+              </li>
+
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-file-text-o"></i>Documentos<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><%= link_to "Plantilla - Importar", reports_template_path %></li>
+                </ul>
+              </li>
+
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-bar-chart"></i>Reportes<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><%= link_to "Generar", reports_path %> </li>
+                </ul>
+              </li>
+              <li class="nav-header">
+                <div class="link"><i class="fa fa-lg fa-cog"></i>Configuracion<i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <li><a href="#">Usuarios</a></li>
+                  <li><%= link_to "Direcciones", lookups_path(@lookup, :lookup_type => "Direcciones") %> </li>
+                  <li><%=link_to "Especialidades Medicas", lookups_path(@lookup, :lookup_type => "Especialidades") %> </li>
+                  <li><%= link_to "Padecimientos" , lookups_path(@lookup, :lookup_type => "Padecimientos") %></li>
+                  <li><%= link_to "Estados Paciente", lookups_path(@lookup, :lookup_type => "Estados Paciente") %></li>
+                  <li><%= link_to "Hospitales", lookups_path(@lookup, :lookup_type => "Hospitales") %></li>
+                  <li><%= link_to "Tipo de Atencion", lookups_path(@lookup, :lookup_type => "Tipo de Atencion") %></li>
+                  <li><%= link_to "Estado Civil", lookups_path(@lookup, :lookup_type => "Estado Civil") %></li>
+                </ul>
+              </li>
+
+          </ul>
+      </aside>
+
+      <!--Body content-->
+      <div class="content">
+        <div class="top-bar">
+          <a href="#menu" class="side-menu-link burger">
+            <span class='burger_inside' id='bgrOne'></span>
+            <span class='burger_inside' id='bgrTwo'></span>
+            <span class='burger_inside' id='bgrThree'></span>
+          </a>
+        </div>
+        <section class="content-inner">
+          <p><%= yield %></p>
+        </section>
+      </div>
+    </div>
+</div>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" %>
+</body>
+</html>

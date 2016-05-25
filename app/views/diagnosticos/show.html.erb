@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @diagnostico.fecha %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @diagnostico.description %>
+</p>
+
+<p>
+  <strong>Fk id persona:</strong>
+  <%= @diagnostico.fk_id_persona %>
+</p>
+
+<%= link_to 'Edit', edit_diagnostico_path(@diagnostico) %> |
+<%= link_to 'Back', diagnosticos_path %>

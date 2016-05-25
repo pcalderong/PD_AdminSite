@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Historial Clinicos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fk id persona</th>
+      <th>Fecha</th>
+      <th>Fk id lookup</th>
+      <th>Orden</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @historial_clinicos.each do |historial_clinico| %>
+      <tr>
+        <td><%= historial_clinico.fk_id_persona %></td>
+        <td><%= historial_clinico.fecha %></td>
+        <td><%= historial_clinico.fk_id_lookup %></td>
+        <td><%= historial_clinico.orden %></td>
+        <td><%= link_to 'Show', historial_clinico %></td>
+        <td><%= link_to 'Edit', edit_historial_clinico_path(historial_clinico) %></td>
+        <td><%= link_to 'Destroy', historial_clinico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Historial clinico', new_historial_clinico_path %>

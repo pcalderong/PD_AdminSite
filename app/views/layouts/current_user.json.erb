@@ -1,0 +1,5 @@
+[
+  <% session[:usuario].each do |user| %>
+    { 'image_url': <%= user.image_url %>, 'name': "<%= hotel.name %>" },
+  <% end %>
+]

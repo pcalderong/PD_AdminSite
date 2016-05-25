@@ -1,0 +1,52 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="page-header">
+  <h1>Lista de Pacientes</h1>
+</div>
+  <table id="pacientes_table" class="table table-hover table-condensed table-striped" height="30%" width="50%">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Fecha nacimiento</th>
+        <th>Correo electronico</th>
+        <th>Telefono</th>
+        <th colspan="3">Opciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @personas.each do |persona| %>
+        <tr>
+          <td><%= persona.nombre %></td>
+          <td><%= persona.primer_apellido %></td>
+          <td><%= persona.segundo_apellido %></td>
+          <td><%= persona.fecha_nacimiento.nil? ? " ":persona.fecha_nacimiento.strftime("%d-%m-%Y") %></td>
+          <td><%= persona.correo_electronico %></td>
+          <td><%= persona.telefono %></td>
+          <td><%= link_to persona do %>
+            <i class="fa fa-eye"></i>
+          <% end %> </td>
+          <td><%= link_to edit_persona_path(persona) do %>
+            <i class="fa fa-pencil"></i>
+          <% end %> </td>
+          <td><%= link_to persona, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash"></i>
+          <% end %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<br>
+
+<%= link_to new_persona_path, class: "btn btn-default" do %>
+    <i class="fa fa-plus">Agregar Paciente</i>
+<% end %> |
+<%= link_to personas_export_path, class: "btn btn-default" do %>
+    <i class="fa fa-plus">Exportar Paciente</i>
+<% end %>

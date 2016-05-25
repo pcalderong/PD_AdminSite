@@ -1,0 +1,181 @@
+<p id="notice"><%= notice %></p>
+<h1>Expediente: <%= @persona.nombre %> <%= @persona.primer_apellido %> <%= @persona.segundo_apellido %></h1>
+
+
+<h2>Información General</h2>
+
+
+<table class="table table-hover table-condensed table-striped"  height="5%" width="50%">
+  <thead>
+    <tr>
+      <th>Fecha Nacimiento</th>
+      <th>Correo Electronico</th>
+      <th>Genero</th>
+      <th>Cedula</th>
+      <th>Estado Civil</th>
+      <th>Telefono</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr>
+        <td><%= @persona.fecha_nacimiento.strftime("%d/%m/%Y") %></td>
+        <td><%= best_in_place @persona, :correo_electronico %></td>
+        <td><%= @persona.genero == false ? "Femenino":"Masculino" %></td>
+        <td><%= @persona.cedula %></td>
+        <td><%= case @persona.estado_civil
+            when 1
+              @persona.genero == false ? "Soltera": "Soltero"
+            when 2
+              @persona.genero == false ? "Casada": "Casado"
+            when 3
+              "Union Libre"
+            else
+              @persona.genero == false ? "Viuda": "Viudo"
+            end
+         %></td>
+         <td><%= @persona.telefono %></td>
+      </tr>
+  </tbody>
+</table>
+<%= link_to edit_persona_path(@persona), class: "btn btn-default" do %>
+    <i class="fa fa-pencil">Editar Paciente</i>
+<% end %>
+
+
+<!-- INFORMACION CONTACTOS -->
+<h2>Informacion Contacto</h2>
+<table class="table table-hover table-condensed table-striped" height="5%" width="30%">
+  <thead>
+    <tr>
+      <th>Telefono</th>
+      <th>Nombre contacto</th>
+      <th>Parentesco</th>
+      <th colspan="3">Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= render @persona.info_contactos%>
+</tbody>
+</table>
+
+<%= link_to new_persona_info_contacto_path(@persona),class: "btn btn-default", id: "btnContacto", onclick: "javascript:showhide('uniquename')" ,remote: true do %>
+    <i class="fa fa-plus">Agregar Contacto</i>
+<% end %>
+<div id="uniquename" style="display:none;">
+  <%= render "info_contactos/form" %>
+</div>
+
+<!-- FIN INFORMACION CONTACTOS -->
+
+<!-- INFORMACION EXTRA -->
+<h2>Informacion Extra del Paciente</h2>
+<table class="table table-hover table-condensed table-striped" height="5%" width="30%">
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Trabajador</th>
+      <th>Lugar estudio trabajo</th>
+      <th>Hijos</th>
+      <th>Cant hijos</th>
+      <th>Cant Hermanos</th>
+      <th>Referencia trab social</th>
+      <th>Ayuda alimentos</th>
+      <th>Ayuda medicamento</th>
+      <th colspan="3">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @persona.info_extra_pacientes.size == 0 || @persona.info_extra_pacientes.nil? %>
+      <tr><td colspan="8"> No existe informacion relacionada</td>
+      <tr><%= render "info_extra_pacientes/form" %></tr>
+  </tbody>
+</table>
+<% else %>
+    <%= render @persona.info_extra_pacientes %>
+      </tbody>
+    </table>
+  <% end %>
+<!-- FIN INFORMACION EXTRA -->
+
+<!-- DIRECCIONES -->
+<h2>Direccion</h2>
+<table class="table table-hover table-condensed table-striped" height="5%" width="30%">
+  <thead>
+    <tr>
+      <th>Provincia</th>
+      <th>Canton</th>
+      <th>Distrito</th>
+      <th>Direccion exacta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @persona.direccions.nil? || @persona.direccions.size == 0 %>
+        <tr><td colspan="11"> No existen direcciones para <%= @persona.nombre %></td><tr>
+        <tr><%= render "direccions/form" %></tr>
+        </tbody>
+      </table>
+    <% else %>
+      <%= render @persona.direccions %>
+        </tbody>
+      </table>
+    <% end %>
+
+<!-- FIN DIRECCIONES -->
+
+<!-- DIAGNOSTICO -->
+<h2>Diagnostico</h2>
+<table class="table table-hover table-condensed table-striped" height="5%" width="30%">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Especialidad</th>
+      <th>Padecimiento</th>
+      <th>Tipo Padecimiento</th>
+      <th>Hospital</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr><%= render @persona.diagnosticos %></tr>
+      <tr><%= render "diagnosticos/form" %></tr>
+    </tbody>
+  </table>
+<!-- FIN DIAGNOSTICO -->
+
+
+<!-- HISTORIAL CLINICO -->
+<h2>Historial Clinico</h2>
+<table class="table table-hover table-condensed table-striped" height="5%" width="30%">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Estado Actual</th>
+      <th colspan="3">Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= render @persona.historial_clinicos%>
+  <div id="historial" style="display:none;">
+        <%= render "historial_clinicos/form" %>
+  </div>
+</tbody>
+</table>
+<!-- <%= link_to new_persona_historial_clinico_path(@persona),class: "btn btn-default", id: "btnContacto", onclick: "javascript:showhide('historial')" ,remote: true do %>
+    <i class="fa fa-plus">Agregar Estado del Paciente</i>
+<% end %> -->
+
+
+<!-- FIN HISTORIAL CLINICO-->
+    <br><br><br><br>
+  <%= link_to personas_path, class: "btn btn-default" do %>
+        <i class="fa fa-undo">Atras</i>
+    <% end %>

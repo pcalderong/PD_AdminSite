@@ -1,0 +1,30 @@
+<%= form_for([@persona, @persona.info_contactos.build]) do |f|%>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this info_contacto from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :telefono %><br>
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre_contacto %><br>
+    <%= f.text_field :nombre_contacto %>
+  </div>
+  <div class="field">
+    <%= f.label :parentesco %><br>
+    <%= f.text_field :parentesco %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  </div>
+
+<% end %>

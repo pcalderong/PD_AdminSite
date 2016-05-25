@@ -1,0 +1,23 @@
+<%= form_for([@persona, @persona.info_extra_pacientes.build]) do |f|%>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this info_extra_paciente from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+      <td><%= f.check_box :estudiante %></td>
+      <td><%= f.check_box :trabajador %></td>
+      <td><%= f.text_field :lugar_estudio_trabajo %></td>
+      <td><%= f.check_box :hijos %></td>
+      <td><%= f.number_field :cant_hijos %></td>
+      <td><%= f.number_field :cant_hermanos %></td>
+      <td><%= f.check_box :referencia_trab_social %></td>
+      <td><%= f.check_box :ayuda_alimentos %></td>
+      <td><%= f.check_box :ayuda_medicamento %></td>
+      <td><%= f.submit 'Guardar', class: "btn btn-primary"%></td>
+<% end %>
