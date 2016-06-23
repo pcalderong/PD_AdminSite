@@ -1,16 +1,10 @@
 class ApplicationController < ActionController::Base
-
-  helper_method :logged_in?, :current_user
-  def logged_in?
-    session.has_key? :usuario
-  end
+  protect_from_forgery with: :exception
+  helper_method :current_user
 
   def current_user
-     Marshal.load(session[:usuario]) if logged_in?
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    puts "My current_user is #{@current_user.inspect}"
+    @current_user
   end
-# [END helper_methods]
-
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
 end

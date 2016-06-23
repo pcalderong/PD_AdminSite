@@ -1,11 +1,11 @@
 default: &default
   oauth2:
-    client_id: 976693173741-o2hh26epnshvavo70p0hsdmcc7lljbc4.apps.googleusercontent.com
-    client_secret: CnFlV_7nBjMfoamm6roNeD-2
+    client_id: 56000117628-ueu939j1oqbm7fs2ng02tffach5tgqg4.apps.googleusercontent.com
+    client_secret: 3pAXsB1Sr9SkIeOeK2HNzcS4
   cloud_storage:
-    bucket: gs://proyectodanieldev
-    access_key_id: GOOGAOX42J2IRU7CMOAX
-    secret_access_key: mq6cDm2e04I/pu+5iodD6omHoxKg1+t/00oKdn5C	
+    bucket: gs://pdadminsite-1351
+    access_key_id: GOOGSTMTJRBZVNLR5SQE
+    secret_access_key: JuQ99tEvmVkkX6Y5+f5JJhyp2wZ2K5eyJQvdfWx4
 
 development:
   <<: *default

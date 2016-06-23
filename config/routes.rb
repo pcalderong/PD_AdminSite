@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
 
-  get "/login", to: redirect('/auth/google_oauth2')
-  # [START logout]
- get "/logout", to: "sessions#destroy"
- # [END logout]
+  # get 'sessions/create'
+  #
+  # get 'sessions/destroy'
+  #
+  get 'home/show'
 
-resources :usuarios
+ #  get "/login", to: redirect('/auth/google_oauth2')
+ #  # [START logout]
+ # get "/logout", to: "sessions#destroy"
+ # # [END logout]
+   get 'auth/:provider/callback', to: 'sessions#create'
+   get 'auth/failure', to: redirect('/')
+   get 'signout', to: 'sessions#destroy', as: 'signout'
+
+   resources :sessions, only: [:create, :destroy]
+   resource :home, only: [:show]
+
+  #  root to: "home#show"
+# resources :usuarios
 
 
  get "reports/generate_report" => "reports#generate_report"
@@ -22,7 +35,7 @@ resources :usuarios
   # [START sessions]
   get '/auth/google_oauth2/callback', to: 'sessions#create'
 
-  resource :session, only: [:create, :destroy]
+  # resource :session, only: [:create, :destroy]
 
   resources :reports
   resources :lookups
